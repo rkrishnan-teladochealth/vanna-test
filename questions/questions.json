@@ -1,0 +1,10 @@
+[
+	{
+		"question":"ABC",
+		"query":"select * from table"
+	},
+	{
+        "question":"ABC1",
+		"query":"select * from table1"
+	}
+]
