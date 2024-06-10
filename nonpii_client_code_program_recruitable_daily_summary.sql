@@ -1,0 +1,42 @@
+CREATE TABLE nonpii.client_code_program_recruitable_daily_summary (
+    date_utc date NOT NULL ENCODE runlength,
+    client_code character varying(50) NOT NULL ENCODE text32k distkey,
+    program character varying(32) NOT NULL ENCODE text255,
+    sfdc_client_id character varying(32) ENCODE lzo,
+    sfdc_contract_number character varying(32) ENCODE lzo,
+    sfdc_launch_date date ENCODE lzo,
+    sfdc_recruitment_began date ENCODE lzo,
+    sfdc_recruitable_population integer ENCODE lzo,
+    sfdc_enrollment_cap integer ENCODE lzo,
+    prereg_payment_eligibility integer NOT NULL ENCODE lzo,
+    prereg_condition_evidence integer NOT NULL ENCODE lzo,
+    prereg_terminated integer NOT NULL ENCODE lzo,
+    prereg_recruitables integer NOT NULL ENCODE lzo,
+    prereg_recruitables_with_email integer NOT NULL ENCODE lzo,
+    prereg_recruitables_with_address integer NOT NULL ENCODE lzo,
+    prereg_recruitables_with_payer integer NOT NULL ENCODE lzo,
+    prereg_recruitables_with_group_id integer NOT NULL ENCODE lzo,
+    prereg_recruitables_with_member_id integer NOT NULL ENCODE lzo,
+    prereg_recruitables_relation_self integer NOT NULL ENCODE lzo,
+    prereg_recruitables_relation_spouse integer NOT NULL ENCODE lzo,
+    prereg_recruitables_relation_dependent integer NOT NULL ENCODE lzo,
+    prereg_recruitables_not_registered integer NOT NULL ENCODE lzo,
+    prereg_recruitables_multi_programs integer NOT NULL ENCODE lzo,
+    prereg_recruitables_multi_programs_not_registered integer NOT NULL ENCODE lzo,
+    members_enrolled integer NOT NULL ENCODE lzo,
+    members_enrolled_not_deactivated integer NOT NULL ENCODE lzo,
+    members_enrolled_not_deactivated_not_lapsed integer NOT NULL ENCODE lzo,
+    members_upsell_eligible integer NOT NULL ENCODE lzo,
+    members_upsell_self_report integer NOT NULL ENCODE lzo,
+    members_upsell_surescripts integer NOT NULL ENCODE lzo,
+    estimated_max_eligible integer NOT NULL DEFAULT 0 ENCODE lzo,
+    sfdc_covered_lives integer ENCODE az64,
+    sfdc_prevalence_count integer ENCODE az64,
+    prereg_payment_eligibility_relation_self integer ENCODE az64,
+    prereg_payment_eligibility_relation_spouse integer ENCODE az64,
+    prereg_payment_eligibility_relation_dependent integer ENCODE az64
+)
+DISTSTYLE KEY
+SORTKEY ( date_utc, client_code, program );
+
+
